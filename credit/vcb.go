@@ -35,11 +35,12 @@ func ConvertVCB(filePath string) (string, error) {
 		components := strings.Split(line, " - ")
 		var amount string
 		if strings.Index(components[0], " ") == -1 {
-			amount = components[0]
+			amount = strings.ReplaceAll(components[0], ",00", "")
 		} else {
 			amountComponents := strings.Split(components[0], " ")
 			amount = amountComponents[len(amountComponents)-1]
 		}
+		amount = strings.ReplaceAll(amount[:len(amount)-3], ".", ",")
 		desc := line[descStart+len(components[0]):]
 		desc = strings.ReplaceAll(desc, " - ", "")
 

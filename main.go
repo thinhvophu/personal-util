@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) == 0 {
+	if len(os.Args) < 2 {
 		fmt.Println("Please specify input filepath")
 	} else {
 		filePath := os.Args[1]

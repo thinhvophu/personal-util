@@ -19,8 +19,8 @@ func ConvertCiti(filePath string) (string, error) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		components := strings.Fields(line)
-		date := components[0]
-		desc := strings.Join(components[1:len(components)-1], " ")
+		date := components[0] + components[1]
+		desc := strings.Join(components[2:len(components)-1], " ")
 		amount := components[len(components)-1]
 		if strings.HasPrefix(amount, "(") && strings.HasSuffix(amount, ")") {
 			amount = "-" + strings.Trim(amount, "()")
