@@ -24,7 +24,7 @@ func ConvertVCB(filePath string) (string, error) {
 	var outputText []string
 	for scanner.Scan() {
 		line := scanner.Text()
-
+		fmt.Println("converting line: " + line)
 		date := convertDate(line[:10])
 		line = line[22:]
 		descStart := 0
@@ -40,6 +40,7 @@ func ConvertVCB(filePath string) (string, error) {
 			amountComponents := strings.Split(components[0], " ")
 			amount = amountComponents[len(amountComponents)-1]
 		}
+
 		amount = strings.ReplaceAll(amount[:len(amount)-3], ".", ",")
 		desc := line[descStart+len(components[0]):]
 		desc = strings.ReplaceAll(desc, " - ", "")

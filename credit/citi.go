@@ -18,6 +18,7 @@ func ConvertCiti(filePath string) (string, error) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
+		fmt.Println("converting line: " + line)
 		components := strings.Fields(line)
 		date := components[0] + components[1]
 		desc := strings.Join(components[2:len(components)-1], " ")
